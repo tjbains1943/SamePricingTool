@@ -1,4 +1,4 @@
-<script>
+
   // Initialize Firebase
   var config = {
     apiKey: "AIzaSyCHPr2zlrS33ebdetDjYXqa9cDfzsjXt9c",
@@ -9,4 +9,3 @@
     messagingSenderId: "810044611886"
   };
   firebase.initializeApp(config);
-</script>
