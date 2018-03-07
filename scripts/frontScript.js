@@ -33,8 +33,14 @@ $(document).ready(function() {
     chart.draw(data, options);
   }
 
-$(".button-primary").on("click", function(event) {
+$("#graphTab").on("click", function(event) {
   event.preventDefault();
   $("#top_x_div").toggle();
+})
+
+
+$("#clothingTab").on("click", function(event) {
+  event.preventDefault();
+  $(".mWTab").toggle();
 })
 });
