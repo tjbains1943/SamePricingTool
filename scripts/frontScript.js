@@ -1,10 +1,32 @@
 
-// Initialize Firebase
- var config = {
-   apiKey: “AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs”,
-   authDomain: “pricingtool-7ba32.firebaseapp.com”,
-   databaseURL: “https://pricingtool-7ba32.firebaseio.com“,
-   projectId: “pricingtool-7ba32”,
-   storageBucket: “”,
-   messagingSenderId: “53201548843”
- };
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Price', 'Amount'],
+          ["Panties", 44],
+          ["Non", 31],
+          ["Null", 12],
+          ["True", 10],
+          ['Falso', 3]
+        ]);
+
+        var options = {
+          title: 'Chess opening moves',
+          width: 900,
+          legend: { position: 'none' },
+          chart: { title: 'Pricing Tool',
+                   subtitle: 'Category Graph' },
+          bars: 'horizontal', // Required for Material Bar Charts.
+          axes: {
+            x: {
+              0: { side: 'top', label: 'Amount'} // Top x-axis.
+            }
+          },
+          bar: { groupWidth: "90%" }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('top_x_div'));
+        chart.draw(data, options);
+      };
