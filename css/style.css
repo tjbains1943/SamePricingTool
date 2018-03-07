@@ -2,3 +2,7 @@
 border: red dashed 1px;
 align-content: center;
 }
+
+table {
+display: none;
+}
