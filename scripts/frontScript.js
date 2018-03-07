@@ -1,4 +1,7 @@
-$(document).ready(function() {
+$(document).ready(function () {
+  $(".mWTab").hide();
+  $(".electOTab").hide();
+
   google.charts.load("current", { packages: ["bar"] });
   google.charts.setOnLoadCallback(drawStuff);
 
@@ -33,14 +36,27 @@ $(document).ready(function() {
     chart.draw(data, options);
   }
 
-$("#graphTab").on("click", function(event) {
-  event.preventDefault();
-  $("#top_x_div").toggle();
-})
+  $("#graphTab").on("click", function (event) {
+    event.preventDefault();
+    $("#top_x_div").toggle();
+  });
 
+  $("#clothingTab").on("click", function (event) {
+    event.preventDefault();
+    $(".mWTab").toggle();
+  });
 
-$("#clothingTab").on("click", function(event) {
-  event.preventDefault();
-  $(".mWTab").toggle();
-})
+  $("#nonClothingTab").on("click", function (event) {
+    event.preventDefault();
+    $(".electOTab").toggle();
+  });
+
+  $("#usedTab").on("click", function (event) {
+    event.preventDefault();
+    $("#graphTab").text("Used Graph");
+  });
+  $("#newTab").on("click", function (event) {
+    event.preventDefault();
+    $("#graphTab").text("New Graph");
+  });
 });
