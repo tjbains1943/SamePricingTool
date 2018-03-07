@@ -1,11 +1,10 @@
 
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCHPr2zlrS33ebdetDjYXqa9cDfzsjXt9c",
-    authDomain: "pricing-tool-e606f.firebaseapp.com",
-    databaseURL: "https://pricing-tool-e606f.firebaseio.com",
-    projectId: "pricing-tool-e606f",
-    storageBucket: "",
-    messagingSenderId: "810044611886"
-  };
-  firebase.initializeApp(config);
+// Initialize Firebase
+ var config = {
+   apiKey: “AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs”,
+   authDomain: “pricingtool-7ba32.firebaseapp.com”,
+   databaseURL: “https://pricingtool-7ba32.firebaseio.com“,
+   projectId: “pricingtool-7ba32”,
+   storageBucket: “”,
+   messagingSenderId: “53201548843”
+ };
