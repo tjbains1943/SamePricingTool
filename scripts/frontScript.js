@@ -65,12 +65,12 @@ $(document).ready(function () {
     $(".table").toggle();
   });
 
-  $(".mWTab").on("click", "button", function(event) {
+  $(".mWTab").on("click", "select", function(event) {
     event.preventDefault();
     $(".brandTab").toggle();
   });
 
-  $(".electOTab").on("click", "button", function(event) {
+  $(".electOTab").on("click", "select", function(event) {
     event.preventDefault();
     $(".brandTab").toggle();
   })
