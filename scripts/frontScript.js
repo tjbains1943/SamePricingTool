@@ -1,6 +1,7 @@
 $(document).ready(function () {
   $(".mWTab").hide();
   $(".electOTab").hide();
+  $(".brandTab").hide();
 
   google.charts.load("current", { packages: ["bar"] });
   google.charts.setOnLoadCallback(drawStuff);
@@ -63,5 +64,17 @@ $(document).ready(function () {
     event.preventDefault();
     $(".table").toggle();
   });
+
+  $(".mWTab").on("click", "button", function(event) {
+    event.preventDefault();
+    console.log(6);
+    $(".brandTab").toggle();
+  });
+
+  $(".electOTab").on("click", "button", function(event) {
+    event.preventDefault();
+    console.log(6);
+    $(".brandTab").toggle();
+  })
 
 });
