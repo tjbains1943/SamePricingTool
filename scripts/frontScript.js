@@ -65,15 +65,13 @@ $(document).ready(function () {
     $(".table").toggle();
   });
 
-  $(".mWTab").on("click", "button", function(event) {
+  $(".mWTab").on("click", "select", function(event) {
     event.preventDefault();
-    console.log(6);
     $(".brandTab").toggle();
   });
 
-  $(".electOTab").on("click", "button", function(event) {
+  $(".electOTab").on("click", "select", function(event) {
     event.preventDefault();
-    console.log(6);
     $(".brandTab").toggle();
   })
 
