@@ -67,13 +67,11 @@ $(document).ready(function () {
 
   $(".mWTab").on("click", "button", function(event) {
     event.preventDefault();
-    console.log(6);
     $(".brandTab").toggle();
   });
 
   $(".electOTab").on("click", "button", function(event) {
     event.preventDefault();
-    console.log(6);
     $(".brandTab").toggle();
   })
 
