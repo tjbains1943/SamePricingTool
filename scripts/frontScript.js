@@ -59,4 +59,9 @@ $(document).ready(function () {
     event.preventDefault();
     $("#graphTab").text("New Graph");
   });
+  $("#listTab").on("click", function (event) {
+    event.preventDefault();
+    $(".table").toggle();
+  });
+
 });
