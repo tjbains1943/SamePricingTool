@@ -25,47 +25,6 @@ var freqVal;
 var p = 1;
 var result = {};
 
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown menu if the user clicks outside of it
-window.onclick = function (event) {
-  if (!event.target.matches('.dropbtn')) {
-
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-};
-
-$(".dropdown ul li").on("click", function () {
-  console.log("Dropdown clicked");
-  category = $(this).val();
-  console.log(category);
-  $("#dropdownButton").text($(this).text());
-});
-
-$("#serchButton").on("click", function () {
-  console.log("search clicked");
-  highest = 0;
-  lowest = 100000;
-  totals = [];
-  totalsRound = [];
-  runningTally = 0;
-  head.empty();
-  body.empty();
-  item = encodeURIComponent($("textarea").val());
-  console.log(item);
-  getData();
-});
-
-
 function modes(array) {
   if (!array.length) return [];
   var modeMap = {},
@@ -93,6 +52,7 @@ function getData() {
   console.log(queryURL);
   console.log(category);
   console.log(item);
+  
   $.ajax({
       url: queryURL,
       method: "GET"
@@ -154,10 +114,10 @@ function getData() {
         console.log(totals);
         console.log(totalsRound);
         totals.sort(function (a, b) {
-          return a - b
+          return a - b;
         });
         totalsRound.sort(function (a, b) {
-          return a - b
+          return a - b;
         });
         console.log(totals);
         console.log(totalsRound);
@@ -190,3 +150,4 @@ function getData() {
         importantRow.append(modePrice);
         importantRow.append(roundedMode);
         head.append(importantRow);
+      }
