@@ -1,7 +1,11 @@
-$(document).ready(function () {
+$(document).ready(function() {
   $(".mWTab").hide();
   $(".electOTab").hide();
   $(".brandTab").hide();
+
+  var clothingNonClothing = "clothing";
+  var mensWomens = "mens";
+  var category = "t-shirt";
 
   google.charts.load("current", { packages: ["bar"] });
   google.charts.setOnLoadCallback(drawStuff);
@@ -37,30 +41,30 @@ $(document).ready(function () {
     chart.draw(data, options);
   }
 
-  $("#graphTab").on("click", function (event) {
+  $("#graphTab").on("click", function(event) {
     event.preventDefault();
     $("#top_x_div").toggle();
   });
 
-  $("#clothingTab").on("click", function (event) {
+  $("#clothingTab").on("click", function(event) {
     event.preventDefault();
     $(".mWTab").toggle();
   });
 
-  $("#nonClothingTab").on("click", function (event) {
+  $("#nonClothingTab").on("click", function(event) {
     event.preventDefault();
     $(".electOTab").toggle();
   });
 
-  $("#usedTab").on("click", function (event) {
+  $("#usedTab").on("click", function(event) {
     event.preventDefault();
     $("#graphTab").text("Used Graph");
   });
-  $("#newTab").on("click", function (event) {
+  $("#newTab").on("click", function(event) {
     event.preventDefault();
     $("#graphTab").text("New Graph");
   });
-  $("#listTab").on("click", function (event) {
+  $("#listTab").on("click", function(event) {
     event.preventDefault();
     $(".table").toggle();
   });
@@ -75,6 +79,25 @@ $(document).ready(function () {
     event.preventDefault();
     console.log(6);
     $(".brandTab").toggle();
-  })
+  });
 
+  $("").on("click", function() {});
+
+  $("#submit").on("click", function(event) {
+    event.preventDefault();
+
+    var baseUrl =
+      "https://open.api.ebay.com/shopping?callname=FindProducts&appid=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&version=1015&siteid=0&responseencoding=JSON&MaxEntries=100&HideDuplicateItems=true";
+    var brand = $("#input").val();
+    var domain = "&DomainName=" + clothingNonClothing;
+    var keywords = "$QueryKeywords=" + mensWomens + category + brand;
+    var url = baseUrl + domain + keywords;
+
+    $.ajax({
+      URL: url,
+      method: "GET",
+    }).then(function(response) {
+      console.log(response);
+    });
+  });
 });
