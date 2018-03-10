@@ -76,4 +76,11 @@ $(document).ready(function() {
     event.preventDefault();
     $(".table").toggle();
   });
+
+  $(document).on("click", ".panties", function(event) {
+    event.preventDefault();
+    console.log("p");
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0; 
+  })
 });
