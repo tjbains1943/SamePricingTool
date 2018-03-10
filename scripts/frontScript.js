@@ -78,4 +78,13 @@ $(document).ready(function() {
     event.preventDefault();
     $(".brandTab").toggle();
   });
+  $("#menInitialOption").on("click", "select", function(event) {
+    event.preventDefault();
+    $(".brandTab").toggle();
+  });
+  $("#womenInitialOption").on("click", "select", function(event) {
+    event.preventDefault();
+    $(".brandTab").toggle();
+  });
+
 });
