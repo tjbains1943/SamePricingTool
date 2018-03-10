@@ -78,24 +78,4 @@ $(document).ready(function() {
     event.preventDefault();
     $(".brandTab").toggle();
   });
-
-  $("").on("click", function() {});
-
-  $("#submit").on("click", function(event) {
-    event.preventDefault();
-
-    var baseUrl =
-      "https://open.api.ebay.com/shopping?callname=FindProducts&appid=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&version=1015&siteid=0&responseencoding=JSON&MaxEntries=100&HideDuplicateItems=true";
-    var brand = $("#input").val();
-    var domain = "&DomainName=" + clothingNonClothing;
-    var keywords = "$QueryKeywords=" + mensWomens + category + brand;
-    var url = baseUrl + domain + keywords;
-
-    $.ajax({
-      URL: url,
-      method: "GET",
-    }).then(function(response) {
-      console.log(response);
-    });
-  });
 });
