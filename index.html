@@ -10,13 +10,6 @@
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/skeleton.css">
 
-    <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script src="./scripts/frontScript.js"></script>
-    <script src="./scripts/backScript.js"></script>
-
 </head>
 
 <body>
@@ -117,7 +110,7 @@
                 </div>
 
                 <div class="six columns">
-                    <!-- <button id="otherTab" class="button-primary">Other</button> -->
+                    <!-- <button id="mensTab" class="button-primary">Men's</button> -->
                     <select>
                         <option selected disabled hidden>Other</option>
                         <optgroup label="Home & Garden">
@@ -152,55 +145,87 @@
                         </optgroup>
                     </select>
                 </div>
-            </div>
-
-            <div class="row brandTab">
-                <div class="twelve columns">
-                    <button id="brandsTab" class="button-primary">Brands</button>
-                    <input id="input"type="text">
-                    <button id="submit">Submit</button>
-                
-                <input type="checkbox">
-                New
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="twelve columns">
-
-
-                    <button id="graphTab" class="button-primary">Graph</button>
-
-                    <div id="top_x_div" style="width: 900px; height: 500px;"></div>
-
-                </div>
-                <div class="twelve columns">
-
-                    <button id="listTab" class="button-primary">List</button>
-                    
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>Picture</th>
-                                <th>Item</th>
-                                <th>Price</th>
-                                <th>Shipping</th>
-                                <th>Total</th>
-                            </tr>
-                        </thead>
-                        <tbody id="itemsTable">
-                        </tbody>
-                    </table>
-                </div>
-
-                <div class="twelve columns">
-
-                    <button id="recentTab" class="button-primary">Recently Priced</button>
-
-                </div>
-            </div>
 
         </div>
+        </section>
+
+        <!-- Non-Clothing row -->
+        <div class="row electOTab">
+
+            <div class="six columns">
+                <button id="electronicsTab" class="button-primary">Electronics</button>
+            </div>
+
+            <div class="six columns">
+                <!-- <button id="otherTab" class="button-primary">Other</button> -->
+                <select>
+                    <option selected disabled hidden>Other</option>
+                    <optgroup label="Swedish Cars">
+                        <option value="volvo">Volvo</option>
+                        <option value="saab">Saab</option>
+                    </optgroup>
+                    <optgroup label="German Cars">
+                        <option value="mercedes">Mercedes</option>
+                        <option value="audi">Audi</option>
+                    </optgroup>
+                </select>
+            </div>
+        </div>
+
+        <div class="row brandTab">
+            <div class="twelve columns">
+                <button id="brandsTab" class="button-primary">Brands</button>
+                <input id="input" type="text">
+                <button id="submit">Submit</button>
+
+                <input type="checkbox"> New
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="twelve columns">
+
+
+                <button id="graphTab" class="button-primary">Graph</button>
+
+                <div id="top_x_div" style="width: 900px; height: 500px;"></div>
+
+            </div>
+            <div class="twelve columns">
+
+                <button id="listTab" class="button-primary">List</button>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Picture</th>
+                            <th>Item</th>
+                            <th>Price</th>
+                            <th>Shipping</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody id="itemsTable">
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="twelve columns">
+
+                <button id="recentTab" class="button-primary">Recently Priced</button>
+
+            </div>
+        </div>
+
+    </div>
+
+
+    <!--<script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="./scripts/frontScript.js"></script>
+    <script src="./scripts/backScript.js"></script>
 
 </body>
 
