@@ -50,7 +50,6 @@ $(document).ready(function() {
     event.preventDefault();
     $(".electOTab").hide();
     $(".mWTab").toggle();
-
   });
 
   $("#nonClothingTab").on("click", function(event) {
@@ -71,23 +70,4 @@ $(document).ready(function() {
     event.preventDefault();
     $(".table").toggle();
   });
-
-  // $(".mWTab").on("click", "select", function(event) {
-  //   event.preventDefault();
-  //   $(".brandTab").toggle();
-  // });
-
-  // $(".electOTab").on("click", "select", function(event) {
-  //   event.preventDefault();
-  //   $(".brandTab").toggle();
-  // });
-  // $("#menInitialOption").on("click", "select", function(event) {
-  //   event.preventDefault();
-  //   $(".brandTab").toggle();
-  // });
-  // $("#womenInitialOption").on("click", "select", function(event) {
-  //   event.preventDefault();
-  //   $(".brandTab").toggle();
-  // });
-
 });

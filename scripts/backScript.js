@@ -71,6 +71,7 @@ $(document).ready(function() {
     item = $("#input").val();
     console.log(item);
     getData();
+    $("#input").val("");
   });
 
   function getData() {
@@ -163,15 +164,17 @@ $(document).ready(function() {
 
   $("#menSelect").on("change", function() {
     $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
   });
   $("#otherSelect").on("change", function() {
-    //$("#menSelect").prop("selectedIndex", 0);
-    //$("#womenSelect").prop("selectedIndex", 0);
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
   });
 });
