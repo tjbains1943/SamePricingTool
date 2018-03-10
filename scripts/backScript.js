@@ -159,6 +159,7 @@ $(document).ready(function() {
         newRow.append(total);
         body.append(newRow);
       }
+      item = "";
     });
   }
 
