@@ -118,7 +118,8 @@ $(document).ready(function() {
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<button>").html(Title);
+        var recent = $("<button>")
+        recent.html(Title);
         recent.addClass("panties");
         newRow.append(picture);
         newRow.append(recent);
