@@ -3,9 +3,9 @@ border: red dashed 1px;
 text-align: center;
 }
 
-table {
+/* table {
 display: none;
-}
+} */
 
 .panties:hover {
     color: red;
