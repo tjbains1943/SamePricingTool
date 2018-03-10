@@ -70,9 +70,10 @@ $(document).ready(function () {
         var picture = $("<td>").html("<img src=" + result.findCompletedItemsResponse[0].searchResult[0].item[i].galleryURL + "alt='img'>");
         var Title = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].title);
         var Price = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__);
-
+        var recent = $("<button>").html(Title);
+        recent.addClass("panties");
         newRow.append(picture);
-        newRow.append(Title);
+        newRow.append(recent);
         newRow.append(Price);
 
         if (result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty('shippingServiceCost')) {
