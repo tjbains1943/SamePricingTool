@@ -48,12 +48,18 @@ $(document).ready(function() {
 
   $("#clothingTab").on("click", function(event) {
     event.preventDefault();
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
     $(".electOTab").hide();
     $(".mWTab").toggle();
   });
 
   $("#nonClothingTab").on("click", function(event) {
     event.preventDefault();
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
     $(".mWTab").hide();
     $(".electOTab").toggle();
   });
