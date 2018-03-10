@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $(".mWTab").hide();
   $(".electOTab").hide();
-  $(".brandTab").hide();
+  $(".brandTab").show();
 
   var clothingNonClothing = "clothing";
   var mensWomens = "mens";
@@ -48,11 +48,19 @@ $(document).ready(function() {
 
   $("#clothingTab").on("click", function(event) {
     event.preventDefault();
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
+    $(".electOTab").hide();
     $(".mWTab").toggle();
   });
 
   $("#nonClothingTab").on("click", function(event) {
     event.preventDefault();
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
+    $(".mWTab").hide();
     $(".electOTab").toggle();
   });
 
@@ -69,22 +77,10 @@ $(document).ready(function() {
     $(".table").toggle();
   });
 
-  $(".mWTab").on("click", "select", function(event) {
+  $(document).on("click", ".panties", function(event) {
     event.preventDefault();
-    $(".brandTab").toggle();
-  });
-
-  $(".electOTab").on("click", "select", function(event) {
-    event.preventDefault();
-    $(".brandTab").toggle();
-  });
-  $("#menInitialOption").on("click", "select", function(event) {
-    event.preventDefault();
-    $(".brandTab").toggle();
-  });
-  $("#womenInitialOption").on("click", "select", function(event) {
-    event.preventDefault();
-    $(".brandTab").toggle();
-  });
-
+    console.log("p");
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0; 
+  })
 });

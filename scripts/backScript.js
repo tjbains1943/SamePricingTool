@@ -71,6 +71,7 @@ $(document).ready(function() {
     item = $("#input").val();
     console.log(item);
     getData();
+    $("#input").val("");
   });
 
   function getData() {
@@ -117,7 +118,8 @@ $(document).ready(function() {
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<button>").html(Title);
+        var recent = $("<button>")
+        recent.html(Title);
         recent.addClass("panties");
         newRow.append(picture);
         newRow.append(recent);
@@ -158,15 +160,23 @@ $(document).ready(function() {
         newRow.append(total);
         body.append(newRow);
       }
+      item = "";
     });
   }
 
   $("#menSelect").on("change", function() {
     $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
+    categoryId = $(this).val();
+  });
+  $("#otherSelect").on("change", function() {
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
   });
 });
