@@ -48,8 +48,10 @@ $(document).ready(function () {
   }
 
   function getData() {
+    //debugger;
     queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=findCompletedItems&SERVICE-VERSION=1.7.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item + "&itemFilter(0).name=SoldItemsOnly&itemFilter(0).value=true&itemFilter(1).name=Condition&itemFilter(1).value=3000&itemFilter(2).name=MinPrice&itemFilter(2).value=10&paginationInput.pageNumber=" + p + "&categoryId=" + category;
 
+    console.log("Entered getData");
     console.log(queryURL);
     console.log(category);
     console.log(item);
@@ -70,9 +72,10 @@ $(document).ready(function () {
         var picture = $("<td>").html("<img src=" + result.findCompletedItemsResponse[0].searchResult[0].item[i].galleryURL + "alt='img'>");
         var Title = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].title);
         var Price = $("<td>").text(result.findCompletedItemsResponse[0].searchResult[0].item[i].sellingStatus[0].currentPrice[0].__value__);
-
+        var recent = $("<button>").html(Title);
+        recent.addClass("panties");
         newRow.append(picture);
-        newRow.append(Title);
+        newRow.append(recent);
         newRow.append(Price);
 
         if (result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty('shippingServiceCost')) {

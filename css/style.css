@@ -6,3 +6,11 @@ text-align: center;
 table {
 display: none;
 }
+
+.panties:hover {
+    color: red;
+}
+
+.panties {
+    border:none;
+}
