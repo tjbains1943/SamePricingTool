@@ -169,4 +169,9 @@ $(document).ready(function() {
     $("#menSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
   });
+  $("#otherSelect").on("change", function() {
+    //$("#menSelect").prop("selectedIndex", 0);
+    //$("#womenSelect").prop("selectedIndex", 0);
+    categoryId = $(this).val();
+  });
 });
