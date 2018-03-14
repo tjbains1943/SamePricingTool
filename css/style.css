@@ -1,16 +1,30 @@
 *{
 border: red dashed 1px;
-text-align: center;
+text-align:center;
 }
 
-/* table {
-display: none;
-} */
+tbody {
+    text-align:center;
+}
 
-.panties:hover {
+input {
+    text-align: left;
+}
+
+.boxers:hover {
     color: red;
 }
 
-.panties {
+.boxers {
     border:none;
+}
+
+@media only screen and (max-width: 550px){
+    *{
+        border:green dashed 1px;
+    }
+
+    .one-half.column {
+        width:50%;
+    }
 }

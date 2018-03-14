@@ -64,10 +64,10 @@ $(document).ready(function() {
       console.log("unchecked");
       console.log(condition);
     }
-    $("#itemsTable").empty();
   });
 
   $("#submit").on("click", function() {
+    $("#itemsTable").empty();
     item = $("#input").val();
     console.log(item);
     getData();
@@ -118,9 +118,9 @@ $(document).ready(function() {
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<button>")
+        var recent = $("<button>");
         recent.html(Title);
-        recent.addClass("panties");
+        recent.addClass("boxers");
         newRow.append(picture);
         newRow.append(recent);
         newRow.append(Price);
@@ -160,6 +160,7 @@ $(document).ready(function() {
         newRow.append(total);
         body.append(newRow);
       }
+      item = "";
     });
   }
 
