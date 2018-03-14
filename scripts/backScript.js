@@ -61,7 +61,6 @@ $(document).ready(function() {
   $("#submit").on("click", function() {
     if (clothing === true) {
       $("#itemsTable").empty();
-      $("#i
       item = $("#input").val();
       console.log(item);
       getData();
