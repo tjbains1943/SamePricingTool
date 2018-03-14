@@ -88,7 +88,17 @@
             <div class="row electOTab">
 
                 <div class="six columns">
-                    <button id="electronicsTab" class="button-primary">Electronics</button>
+                    <select id="electronicsSelect">
+                        <option id="electronicsInitialOption" value="" selected disabled hidden>Electronics</option>
+                        <optgroup label="Electronics">
+                            <option value="abcat0401000">Digital Cameras</option>
+                            <option value="pcmcat242800050021">Health, Fitness, Beauty</option>
+                            <option value="abcat0204000">Headphones</option>
+                            <option value="pcmcat241600050001">Home Audio</option>
+                            <option value="pcmcat310200050004">Portable/Wireless Speakers</option>
+                            <option value="abcat0912000">Small Kitchen Appliances</option>
+                        </optgroup>
+                    </select>
                 </div>
 
                 <div class="six columns">
@@ -168,7 +178,7 @@
 
                 <button id="listTab" class="button-primary">List</button>
 
-            <table class="table">
+                <table class="table">
                     <thead>
                         <tr>
                             <th>Picture</th>

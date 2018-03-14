@@ -30,6 +30,8 @@ $(document).ready(function() {
   var conditionUsed = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
   var conditionNew = "&itemFilter(1).name=Condition&itemFilter(1).value=1000";
   var condition = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
+  var clothing = false;
+  var nonClothing = false;
 
   function modes(array) {
     if (!array.length) return [];
@@ -67,13 +69,62 @@ $(document).ready(function() {
   });
 
   $("#submit").on("click", function() {
-    $("#itemsTable").empty();
-    item = $("#input").val();
-    console.log(item);
-    getData();
-    $("#input").val("");
+    if (clothing === true) {
+      $("#itemsTable").empty();
+      item = $("#input").val();
+      console.log(item);
+      getData();
+      $("#input").val("");
+      clothing = false;
+    }
+    if (nonClothing === true) {
+      $("#itemsTable").empty();
+      item = $("#input").val();
+      getBestBuyData();
+      $("#input").val("");
+      nonClothing = false;
+    }
   });
 
+  function getBestBuyData() {
+    queryURL =
+      "https://api.bestbuy.com/v1/products((search=" +
+      item +
+      ")&(categoryPath.id=" +
+      categoryId +
+      "))?apiKey=aZbPaFdEwGA1IMWTXeQt0ONL&sort=image.asc&show=image,modelNumber,name,regularPrice,shipping,thumbnailImage&format=json&pageSize=100";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function(response) {
+      for (let i = 0; i < response.products.length; i++) {
+        var newRow = $("<tr>");
+        var picture = $("<td>").html(
+          "<img src=" +
+            response.products[i].image +
+            " alt='img' 'height=100px' width='100px'>"
+        );
+        var Title = $("<td>").text(response.products[i].name);
+        var Price = $("<td>").text(response.products[i].regularPrice);
+        var recent = $("<button>");
+        recent.html(Title);
+        recent.addClass("boxers");
+        newRow.append(picture);
+        newRow.append(recent);
+        newRow.append(Price);
+
+        var Shipping = $("<td>").text("$0.00");
+        var Total = $("<td>").text(response.products[i].regularPrice);
+
+        newRow.append(Shipping);
+        newRow.append(Total);
+        body.append(newRow);
+      }
+      item = "";
+      console.log(response);
+    });
+  }
   function getData() {
     //debugger;
     queryURL =
@@ -84,20 +135,11 @@ $(document).ready(function() {
       "&paginationInput.pageNumber=1&categoryId=" +
       categoryId;
 
-    console.log("Entered getData");
-    console.log(queryURL);
-    console.log(category);
-    console.log(item);
-    console.log(condition);
-
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function(response) {
       result = JSON.parse(response);
-
-      // console.log(result);
-      //   console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
       for (
         var i = 0;
@@ -167,16 +209,29 @@ $(document).ready(function() {
   $("#menSelect").on("change", function() {
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    clothing = true;
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    clothing = true;
   });
   $("#otherSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    nonClothing = true;
+  });
+  $("#electronicsSelect").on("change", function() {
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
+    categoryId = $(this).val();
+    nonClothing = true;
   });
 });
