@@ -4,6 +4,18 @@ $(document).ready(function() {
   $(".brandTab").show();
   $(".table").hide();
   document.getElementById("input").disabled = true;
+
+  var config = {
+    apiKey: "AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs",
+    authDomain: "pricingtool-7ba32.firebaseapp.com",
+    databaseURL: "https://pricingtool-7ba32.firebaseio.com",
+    projectId: "pricingtool-7ba32",
+    storageBucket: "",
+    messagingSenderId: "53201548843",
+  };
+  
+  firebase.initializeApp(config);
+  var db = firebase.database();
   
   
   var clothingNonClothing = "clothing";
@@ -82,11 +94,16 @@ $(document).ready(function() {
   $("#recentTab").on("click", function(event) {
     event.preventDefault();
     $(".recentItem").toggle();
+    db.ref("recentItems").on("child_added", function(snap) {
+        console.log(snap.val());
+    })
   });
 
   $(document).on("click", ".boxers", function(event) {
     event.preventDefault();
-    console.log(this.val());
+    db.ref("recentItems").push({
+      recentItem: $(this).siblings()
+    });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
   })
