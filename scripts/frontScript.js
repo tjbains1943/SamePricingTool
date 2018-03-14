@@ -65,7 +65,8 @@ $(document).ready(function() {
   $(document).on("click", ".boxers", function(event) {
     event.preventDefault();
     db.ref("recentItems").push({
-      recentItem: $(this).siblings()
+      thisItem: $(this),
+      recentItem: $(this).siblings(),
     });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 

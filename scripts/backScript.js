@@ -61,6 +61,7 @@ $(document).ready(function() {
   $("#submit").on("click", function() {
     if (clothing === true) {
       $("#itemsTable").empty();
+      $("#i
       item = $("#input").val();
       console.log(item);
       getData();
@@ -69,6 +70,7 @@ $(document).ready(function() {
     }
     if (nonClothing === true) {
       $("#itemsTable").empty();
+      if ($("#input").val() === "") {alert("Please enter search term")};
       item = $("#input").val();
       getBestBuyData();
       $("#input").val("");
@@ -221,6 +223,7 @@ $(document).ready(function() {
     clothing = true;
   });
   $("#electronicsSelect").on("change", function() {
+    $("#input").val("");
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
