@@ -13,7 +13,7 @@ $(document).ready(function() {
   function drawStuff() {
     var data = new google.visualization.arrayToDataTable([
       ["Price", "Amount"],
-      ["Panties", 44],
+      ["boxers", 44],
       ["Non", 31],
       ["Null", 12],
       ["True", 10],
@@ -77,7 +77,7 @@ $(document).ready(function() {
     $(".table").toggle();
   });
 
-  $(document).on("click", ".panties", function(event) {
+  $(document).on("click", ".boxers", function(event) {
     event.preventDefault();
     console.log("p");
     document.body.scrollTop = 0;

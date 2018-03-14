@@ -120,7 +120,7 @@ $(document).ready(function() {
         );
         var recent = $("<button>");
         recent.html(Title);
-        recent.addClass("panties");
+        recent.addClass("boxers");
         newRow.append(picture);
         newRow.append(recent);
         newRow.append(Price);

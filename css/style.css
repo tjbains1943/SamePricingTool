@@ -3,9 +3,9 @@ border: red dashed 1px;
 text-align: center;
 }
 
-/* table {
-display: none;
-} */
+tbody {
+    width:100%;
+}
 
 .panties:hover {
     color: red;
@@ -13,4 +13,10 @@ display: none;
 
 .panties {
     border:none;
+}
+
+@media only screen and (max-width: 550px){
+    *{
+        border:green dashed 1px;
+    }
 }
