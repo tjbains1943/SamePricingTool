@@ -2,7 +2,10 @@ $(document).ready(function() {
   $(".mWTab").hide();
   $(".electOTab").hide();
   $(".brandTab").show();
-
+  $(".table").hide();
+  document.getElementById("input").disabled = true;
+  
+  
   var clothingNonClothing = "clothing";
   var mensWomens = "mens";
   var category = "t-shirt";
@@ -40,12 +43,16 @@ $(document).ready(function() {
   });
   $("#listTab").on("click", function(event) {
     event.preventDefault();
-    $(".table").toggle();
+    $("#displayItems").toggle();
+  });
+  $("#recentTab").on("click", function(event) {
+    event.preventDefault();
+    $(".recentItem").toggle();
   });
 
   $(document).on("click", ".boxers", function(event) {
     event.preventDefault();
-    console.log("p");
+    console.log(this.val());
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
   })

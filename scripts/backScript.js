@@ -202,15 +202,18 @@ $(document).ready(function() {
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    document.getElementById("input").disabled = false;
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    document.getElementById("input").disabled = false;
   });
   $("#otherSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    document.getElementById("input").disabled = false;
   });
 });
