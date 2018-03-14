@@ -130,7 +130,7 @@ $(document).ready(function() {
       method: "GET",
     }).then(function(response) {
       result = JSON.parse(response);
-      drawStuff();
+      // drawStuff();
 
       for (
         var i = 0;
@@ -203,6 +203,7 @@ $(document).ready(function() {
     $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
     document.getElementById("input").disabled = false;
+    clothing = true;
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
@@ -210,13 +211,14 @@ $(document).ready(function() {
     $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
     document.getElementById("input").disabled = false;
+    clothing = true;
   });
   $("#otherSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
     $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
-    nonClothing = true;
+    clothing = true;
   });
   $("#electronicsSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
