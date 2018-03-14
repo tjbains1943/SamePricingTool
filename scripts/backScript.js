@@ -1,14 +1,4 @@
 $(document).ready(function() {
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs",
-    authDomain: "pricingtool-7ba32.firebaseapp.com",
-    databaseURL: "https://pricingtool-7ba32.firebaseio.com",
-    projectId: "pricingtool-7ba32",
-    storageBucket: "",
-    messagingSenderId: "53201548843",
-  };
-
   var item = "anthropologie";
   var category = "63861";
   var highest = 0;
@@ -135,11 +125,54 @@ $(document).ready(function() {
       "&paginationInput.pageNumber=1&categoryId=" +
       categoryId;
 
+<<<<<<< HEAD
+=======
+    console.log("Entered getData");
+    console.log(queryURL);
+    console.log(category);
+    console.log(item);
+    console.log(condition);
+
+    google.charts.load("current", { packages: ["bar"] });
+
+    function drawStuff() {
+      var data = new google.visualization.arrayToDataTable([
+        ["Price", "Amount"],
+        ["boxers", 44],
+        ["Non", 31],
+        ["Null", 12],
+        ["True", 10],
+        ["Falso", 3],
+      ]);
+
+      var options = {
+        title: "Chess opening moves",
+        width: 900,
+        legend: { position: "none" },
+        chart: {
+          title: "Pricing Tool",
+          subtitle: "Category Graph",
+        },
+        bars: "horizontal", // Required for Material Bar Charts.
+        axes: {
+          x: {
+            0: { side: "top", label: "Amount" }, // Top x-axis.
+          },
+        },
+        bar: { groupWidth: "90%" },
+      };
+
+      var chart = new google.charts.Bar(document.getElementById("top_x_div"));
+      chart.draw(data, options);
+    }
+
+>>>>>>> 195b77298583d59568bb2ec3dbb1c372af1a98e3
     $.ajax({
       url: queryURL,
       method: "GET",
     }).then(function(response) {
       result = JSON.parse(response);
+      drawStuff();
 
       for (
         var i = 0;
@@ -211,14 +244,22 @@ $(document).ready(function() {
     $("#otherSelect").prop("selectedIndex", 0);
     $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+<<<<<<< HEAD
     clothing = true;
+=======
+    document.getElementById("input").disabled = false;
+>>>>>>> 195b77298583d59568bb2ec3dbb1c372af1a98e3
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+<<<<<<< HEAD
     clothing = true;
+=======
+    document.getElementById("input").disabled = false;
+>>>>>>> 195b77298583d59568bb2ec3dbb1c372af1a98e3
   });
   $("#otherSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
@@ -232,6 +273,10 @@ $(document).ready(function() {
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+<<<<<<< HEAD
     nonClothing = true;
+=======
+    document.getElementById("input").disabled = false;
+>>>>>>> 195b77298583d59568bb2ec3dbb1c372af1a98e3
   });
 });

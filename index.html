@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/skeleton.css">
-    <link rel="stylesheet" href="./css/colorScheme/theme2.css">
 
 </head>
 
@@ -178,7 +177,11 @@
 
                 <button id="listTab" class="button-primary">List</button>
 
+<<<<<<< HEAD
                 <table class="table">
+=======
+                <table class="table" id="displayItems">
+>>>>>>> 195b77298583d59568bb2ec3dbb1c372af1a98e3
                     <thead>
                         <tr>
                             <th>Picture</th>
@@ -198,9 +201,9 @@
                 <button id="recentTab" class="button-primary">Recently Priced</button>
 
             </div>
-            <p>For items to appear here please click the title of chosen item.</p>
+            <p class="table recentItem">For items to appear here please click the title of chosen item.</p>
 
-            <table class="table">
+            <table class="table recentItem">
                 <thead>
                     <tr>
                         <th>Picture</th>
@@ -220,6 +223,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./scripts/frontScript.js"></script>

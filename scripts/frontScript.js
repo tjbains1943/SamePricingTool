@@ -2,44 +2,25 @@ $(document).ready(function() {
   $(".mWTab").hide();
   $(".electOTab").hide();
   $(".brandTab").show();
+  $(".table").hide();
+  document.getElementById("input").disabled = true;
 
+  var config = {
+    apiKey: "AIzaSyCeu8LNzpEl4vmP-_Gm4pRL04krzERMLDs",
+    authDomain: "pricingtool-7ba32.firebaseapp.com",
+    databaseURL: "https://pricingtool-7ba32.firebaseio.com",
+    projectId: "pricingtool-7ba32",
+    storageBucket: "",
+    messagingSenderId: "53201548843",
+  };
+  
+  firebase.initializeApp(config);
+  var db = firebase.database();
+  
+  
   var clothingNonClothing = "clothing";
   var mensWomens = "mens";
   var category = "t-shirt";
-
-  google.charts.load("current", { packages: ["bar"] });
-  google.charts.setOnLoadCallback(drawStuff);
-
-  function drawStuff() {
-    var data = new google.visualization.arrayToDataTable([
-      ["Price", "Amount"],
-      ["boxers", 44],
-      ["Non", 31],
-      ["Null", 12],
-      ["True", 10],
-      ["Falso", 3],
-    ]);
-
-    var options = {
-      title: "Chess opening moves",
-      width: 900,
-      legend: { position: "none" },
-      chart: {
-        title: "Pricing Tool",
-        subtitle: "Category Graph",
-      },
-      bars: "horizontal", // Required for Material Bar Charts.
-      axes: {
-        x: {
-          0: { side: "top", label: "Amount" }, // Top x-axis.
-        },
-      },
-      bar: { groupWidth: "90%" },
-    };
-
-    var chart = new google.charts.Bar(document.getElementById("top_x_div"));
-    chart.draw(data, options);
-  }
 
   $("#graphTab").on("click", function(event) {
     event.preventDefault();
@@ -74,12 +55,21 @@ $(document).ready(function() {
   });
   $("#listTab").on("click", function(event) {
     event.preventDefault();
-    $(".table").toggle();
+    $("#displayItems").toggle();
+  });
+  $("#recentTab").on("click", function(event) {
+    event.preventDefault();
+    $(".recentItem").toggle();
+    db.ref("recentItems").on("child_added", function(snap) {
+        console.log(snap.val());
+    })
   });
 
   $(document).on("click", ".boxers", function(event) {
     event.preventDefault();
-    console.log("p");
+    db.ref("recentItems").push({
+      recentItem: $(this).siblings()
+    });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
   })
