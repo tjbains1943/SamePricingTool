@@ -93,27 +93,31 @@ $(document).ready(function() {
     google.charts.load("current", { packages: ["bar"] });
 
     function drawStuff() {
-      var data = new google.visualization.arrayToDataTable([
-        ["Price", "Amount"],
-        ["boxers", 44],
-        ["Non", 31],
-        ["Null", 12],
-        ["True", 10],
-        ["Falso", 3],
-      ]);
+      var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'price');
+        data.addColumn('number', 'frequencyValue');
+
+        // load data
+      for (var j = 0; j < freq.length; j++) {
+          var row = [freq[j].toString(), freqVal[j]];
+          data.addRow(row);
+        }
 
       var options = {
-        title: "Chess opening moves",
-        width: 900,
+        title: "Frequency Graph",
+        hAxis: {
+          title: 'Number Sold',
+          minValue: 0
+        },
         legend: { position: "none" },
         chart: {
-          title: "Pricing Tool",
-          subtitle: "Category Graph",
+          title: "Frequency Graph",
         },
         bars: "horizontal", // Required for Material Bar Charts.
         axes: {
           x: {
-            0: { side: "top", label: "Amount" }, // Top x-axis.
+            0: { side: "Price", label: "Number Sold" }, // Top x-axis.
           },
         },
         bar: { groupWidth: "90%" },
@@ -128,16 +132,12 @@ $(document).ready(function() {
       method: "GET",
     }).then(function(response) {
       result = JSON.parse(response);
-      drawStuff();
 
-      // console.log(result);
-      //   console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
+      
+console.log(result);
+console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
-      for (
-        var i = 0;
-        i < result.findCompletedItemsResponse[0].searchResult[0].item.length;
-        i++
-      ) {
+      for ( var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
           "<img src=" +
@@ -189,14 +189,46 @@ $(document).ready(function() {
         }
 
         var total = $("<td>").text(totalNumber.toFixed(2));
+        //create arrays for math and graphs
+        totals.push(totalNumber);
+        totalsRound.push(Math.round(totalNumber));
 
         newRow.append(Shipping);
         newRow.append(total);
         body.append(newRow);
       }
       item = "";
+      function createFreq(arry) {
+        var a = [], b = [], prev;
+        arry.sort(function (a, b) { return a - b });
+        console.log(arry);
+
+        for (var k = 0; k < arry.length; k++) {
+          if (arry[k] !== prev) {
+            a.push(arry[k]);
+            b.push(1);
+          } else {
+            b[b.length - 1]++;
+          }
+          prev = arry[k];
+        }
+
+        freq = a;
+        console.log(freq);
+        freqVal = b;
+        console.log(freqVal);
+      }
+
+      createFreq(totalsRound);
+
+      drawStuff();
+
+      $(window).resize(function () {
+        drawStuff();
+      });
     });
   }
+
 
   $("#menSelect").on("change", function() {
     $("#womenSelect").prop("selectedIndex", 0);
