@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="./css/normalize.css">
     <link rel="stylesheet" href="./css/skeleton.css">
-    <link rel="stylesheet" href="./css/colorScheme/theme2.css">
 
 </head>
 
@@ -88,7 +87,17 @@
             <div class="row electOTab">
 
                 <div class="six columns">
-                    <button id="electronicsTab" class="button-primary">Electronics</button>
+                    <select id="electronicsSelect">
+                        <option id="electronicsInitialOption" value="" selected disabled hidden>Electronics</option>
+                        <optgroup label="Electronics">
+                            <option value="abcat0401000">Digital Cameras</option>
+                            <option value="pcmcat242800050021">Health, Fitness, Beauty</option>
+                            <option value="abcat0204000">Headphones</option>
+                            <option value="pcmcat241600050001">Home Audio</option>
+                            <option value="pcmcat310200050004">Portable/Wireless Speakers</option>
+                            <option value="abcat0912000">Small Kitchen Appliances</option>
+                        </optgroup>
+                    </select>
                 </div>
 
                 <div class="six columns">
@@ -151,7 +160,7 @@
 
         <div class="row brandTab">
             <div class="twelve columns">
-                <button id="brandsTab" class="button-primary">Brands</button>
+                <button id="brandsTab" class="button-primary">Keyword</button>
                 <input id="input" type="text">
                 <button id="submit">Submit</button>
 
@@ -210,6 +219,7 @@
 
     <script src="https://www.gstatic.com/firebasejs/4.10.1/firebase.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/4.11.0/firebase.js"></script>
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="./scripts/frontScript.js"></script>
