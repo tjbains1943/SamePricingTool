@@ -58,7 +58,7 @@ $(document).ready(function() {
 
   $("#submit").on("click", function() {
     $("#itemsTable").empty();
-    item = $("#input").val();
+    item = $("#input").val().trim();
     console.log(item);
     getData();
     $("#input").val("");

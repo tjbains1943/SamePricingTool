@@ -60,9 +60,6 @@ $(document).ready(function() {
   $("#recentTab").on("click", function(event) {
     event.preventDefault();
     $(".recentItem").toggle();
-    db.ref("recentItems").on("child_added", function(snap) {
-        console.log(snap.val());
-    })
   });
 
   $(document).on("click", ".boxers", function(event) {
@@ -73,4 +70,7 @@ $(document).ready(function() {
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
   })
+  db.ref("recentItems").on("child_added", function(snap) {
+    console.log(snap.val());
+})
 });
