@@ -37,21 +37,12 @@ body{
     background-color: #DEA0EF;
 }
 
-tbody {
-    text-align:center;
-}
-
 #nonClothingTab, 
 #clothingTab {
     box-sizing:border-box;
     width:49.7%;
     height:110%;
     border-radius: 0%;
-}
-
-.themed-tbody {
-    background-color: #F7FEA7 !important;
-    color: #EFFB67 !important;
 }
 
 .themed-button {
@@ -63,7 +54,8 @@ tbody {
 .themed-button:hover {
     color: #50A0E2 !important;    
     background-color: #A0F4B3 !important;
-    border-color: #53CC6E !important;    
+    border-color: #53CC6E !important;
+    border-width: 2px; 
 }
 
 .themed-select {
@@ -73,9 +65,10 @@ tbody {
 }
 
 .themed-select:hover {
-    color: #50A0E2 !important;    
+    color: #50A0E2 !important;
     background-color: #A0F4B3 !important;
-    border-color: #53CC6E !important;    
+    border-color: #53CC6E !important;
+    border-width: 2px;
 }
 
 
@@ -85,6 +78,30 @@ tbody {
     background-color: #A0F4B3 !important;
     border-color: #9BC9A6 !important;
 }
+
+.themed-input:hover {
+    text-align: left;
+    color: #50A0E2 !important;
+    background-color: #A0F4B3 !important;
+    border-color: #48EB6C !important;
+    border-width: 2px;
+}
+
+.themed-table {
+    color: #5188B5;
+    background-color: #A3CCEE;
+    border-color: #50A0E2;
+}
+
+tbody {
+    text-align:center;
+}
+
+.themed-tbody {
+    background-color: #F7FEA7 !important;
+    color: #EFFB67 !important;
+}
+
 
 .boxers:hover {
     color: red;
