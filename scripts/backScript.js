@@ -148,22 +148,37 @@ $(document).ready(function() {
         }
 
       var options = {
-        title: "Frequency Graph",
-        chartArea: { width: '50%' },
-        hAxis: {
-          title: 'Total Population',
-          minValue: 0,
+        legend: { position: 'none' },
+        chart: {
+          title: 'Distribution Chart',
+          subtitle: 'number of items sold at this pirce point, rounded to the nearest dollar'
         },
-        vAxis: {
-          title: 'City'
+        backgroundColor: {
+          fill: '#A0F4B3',
+          fillOpacity: 1.0,
+          stroke: '#48EB6C',
+          strokeWidth: '1',
         },
-        legend: { position: "none" },
-        bars: "horizontal", // Required for Material Bar Charts.
-        bar: { groupWidth: "100%" },
+        bars: 'horizontal', // Required for Material Bar Charts.
+        series: {
+          0: { axis: 'freq' }, // Bind series 0 to an axis named 'distance'.
+          1: { axis: 'items' } // Bind series 1 to an axis named 'brightness'.
+        },
+        axes: {
+          x: {
+            freq: { label: 'Number of items sold' }, // Bottom x-axis.
+            items: { label: 'apparent magnitude' } // Top x-axis.
+          }
+        },
+        series: {
+          0: {
+            color: '#EFFE4E'
+          }
+        }
       };
 
       var chart = new google.charts.Bar(document.getElementById("top_x_div"));
-      chart.draw(data, options);
+      chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
     $.ajax({
