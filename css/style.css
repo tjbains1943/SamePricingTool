@@ -28,8 +28,8 @@ exported save: Palette E.html
 }
 
 *{
-    /* note that dashed border is for dev layout only */
-border: #C24BE4 dashed 1px;
+    /* note that dashed border is for dev layout only 
+border: #C24BE4 dashed 1px; */
 text-align:center;
 }
 
@@ -91,6 +91,7 @@ body{
     color: #5188B5;
     background-color: #A3CCEE;
     border-color: #50A0E2;
+    border-width: 2px;
 }
 
 tbody {
@@ -98,13 +99,17 @@ tbody {
 }
 
 .themed-tbody {
-    background-color: #F7FEA7 !important;
-    color: #EFFB67 !important;
+    color: #5188B5;
+    background-color: #A3CCEE;
+    border-color: #50A0E2;
+    border-width: 2px;
 }
 
 
 .boxers:hover {
-    color: red;
+    color: #53CC6E;
+    font: outline;
+    font-weight: bolder;
 }
 
 .boxers {
