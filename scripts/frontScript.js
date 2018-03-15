@@ -2,7 +2,7 @@ $(document).ready(function() {
   $(".mWTab").hide();
   $(".electOTab").hide();
   $(".brandTab").show();
-  $(".themed-table").hide();
+  $(".table").hide();
   $("#top_x_div").hide();
   document.getElementById("input").disabled = true;
 
