@@ -150,19 +150,13 @@ $(document).ready(function() {
         title: "Frequency Graph",
         hAxis: {
           title: 'Number Sold',
-          minValue: 0
+        },
+        vAxis: {
+          title: 'Price',
         },
         legend: { position: "none" },
-        chart: {
-          title: "Frequency Graph",
-        },
         bars: "horizontal", // Required for Material Bar Charts.
-        axes: {
-          x: {
-            0: { side: "Price", label: "Number Sold" }, // Top x-axis.
-          },
-        },
-        bar: { groupWidth: "90%" },
+        bar: { groupWidth: "100%" },
       };
 
       var chart = new google.charts.Bar(document.getElementById("top_x_div"));
@@ -179,6 +173,9 @@ $(document).ready(function() {
 console.log(result);
 console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
+      //create alert for no results
+     
+
       for ( var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
@@ -194,7 +191,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<button>");
+        var recent = $("<div>");
         recent.html(Title);
         recent.addClass("boxers");
         newRow.append(picture);
@@ -202,9 +199,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
         newRow.append(Price);
 
         if (
-          result.findCompletedItemsResponse[0].searchResult[0].item[
-            i
-          ].shippingInfo[0].hasOwnProperty("shippingServiceCost")
+          result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty("shippingServiceCost")
         ) {
           Shipping = $("<td>").text(
             result.findCompletedItemsResponse[0].searchResult[0].item[i]
