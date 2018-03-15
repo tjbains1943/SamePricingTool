@@ -189,7 +189,7 @@ text-align:center;
 }
 
 body{
-    background-color: #DEA0EF;
+    background-color: rgb(231, 206, 238);
 }
 
 td {
@@ -248,7 +248,7 @@ td {
 
 .themed-table {
     color: #5188B5;
-    background-color: #A3CCEE;
+    background-color: rgb(197, 221, 240);
     border-color: #50A0E2;
     border-width: 2px;
 }
@@ -256,14 +256,6 @@ td {
 tbody {
     text-align:center;
 }
-
-.themed-tbody {
-    color: #5188B5;
-    background-color: #A3CCEE;
-    border-color: #50A0E2;
-    border-width: 2px;
-}
-
 
 .boxers:hover {
     color: #53CC6E;
