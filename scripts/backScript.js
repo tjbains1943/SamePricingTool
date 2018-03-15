@@ -139,7 +139,7 @@ console.log($("#itemsTable").html())
       var data = new google.visualization.DataTable();
 
         data.addColumn('string', 'price');
-        data.addColumn('number', 'frequencyValue + green');
+        data.addColumn('number', 'frequencyValue');
 
         // load data
       for (var j = 0; j < freq.length; j++) {
@@ -208,7 +208,7 @@ if (!('item' in result.findCompletedItemsResponse[0].searchResult[0])) {
     var newWord = result.getSearchKeywordsRecommendationResponse[0].keywords;
     var errorDisplay = $("<p>");
   errorDisplay.addClass("errorMsg");
-  $(".twelveSon").append(errorDisplay.html("Sorry, your search returned 0 results. The suggested word is <i>" + newWord + "</i>."));
+  $(".twelveSon").append(errorDisplay.html("Sorry, your search returned 0 results. Did you mean <i>" + newWord + "</i>?"));
   })
   return;
 }
