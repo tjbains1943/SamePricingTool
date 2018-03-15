@@ -153,8 +153,12 @@ $(document).ready(function() {
           title: 'Distribution Chart',
           subtitle: 'number of items sold at this pirce point, rounded to the nearest dollar'
         },
+        chartArea: {
+          left: '-50%',
+          width: '50%'
+        },
         backgroundColor: {
-          fill: '#A0F4B3',
+          fill: '#C8EBD0',
           fillOpacity: 1.0,
           stroke: '#48EB6C',
           strokeWidth: '1',
@@ -172,7 +176,7 @@ $(document).ready(function() {
         },
         series: {
           0: {
-            color: '#EFFE4E'
+            color: '#3CC95B'
           }
         }
       };
