@@ -69,7 +69,7 @@ $(document).ready(function() {
     }
     if (nonClothing === true) {
       $("#itemsTable").empty();
-      if ($("#input").val() === "") {alert("Please enter search term")};
+      if ($("#input").val() === "") {alert("Please enter search term");}
       item = $("#input").val();
       getBestBuyData();
       $("#input").val("");
@@ -89,6 +89,7 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET",
     }).then(function(response) {
+      
       for (let i = 0; i < response.products.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
@@ -148,11 +149,13 @@ $(document).ready(function() {
 
       var options = {
         title: "Frequency Graph",
+        chartArea: { width: '50%' },
         hAxis: {
-          title: 'Number Sold',
+          title: 'Total Population',
+          minValue: 0,
         },
         vAxis: {
-          title: 'Price',
+          title: 'City'
         },
         legend: { position: "none" },
         bars: "horizontal", // Required for Material Bar Charts.
@@ -237,7 +240,9 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
       item = "";
       function createFreq(arry) {
         var a = [], b = [], prev;
-        arry.sort(function (a, b) { return a - b });
+        arry.sort(function (a, b) { 
+          return a - b; 
+        });
         console.log(arry);
 
         for (var k = 0; k < arry.length; k++) {
