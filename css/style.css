@@ -4,15 +4,49 @@ http://paletton.com/#uid=c4O1+3y2T0kaWV7mcQPiXAMb5J97h-i
 exported save: Palette E.html
 */
 
+/* bubbleing header by html5andblog on CodePen */
+.bubbles {
+    display: inline-block;
+    font-family: arial;
+    position: relative;
+}
+
+.bubbles h1 {
+    position: relative;
+    margin: 1em 0 0;
+    font-family: 'Luckiest Guy', cursive;
+    color: #fff;
+    z-index: 2;
+}
+
+.individual-bubble {
+    position: absolute;
+    border-radius: 100%;
+    bottom: 10px;
+    background-color: #fff;
+    z-index: 1;
+}
+
 *{
     /* note that dashed border is for dev layout only */
 border: #C24BE4 dashed 1px;
 text-align:center;
-background-color: #DEA0EF;
+}
+
+body{
+    background-color: #DEA0EF;
 }
 
 tbody {
     text-align:center;
+}
+
+#nonClothingTab, 
+#clothingTab {
+    box-sizing:border-box;
+    width:49.7%;
+    height:110%;
+    border-radius: 0%;
 }
 
 .themed-tbody {
