@@ -22,10 +22,10 @@
     <div class="container">
         <div class="row">
             <div class="one-half column half">
-                <button id="nonClothingTab" class="button-primary">Non-Clothing</button>
+                <button id="nonClothingTab" class="button-primary themed-button">Non-Clothing</button>
             </div>
             <div class="one-half column half">
-                <button id="clothingTab" class="button-primary">Clothing</button>
+                <button id="clothingTab" class="button-primary themed-button">Clothing</button>
             </div>
         </div>
 
@@ -87,6 +87,7 @@
             <div class="row electOTab">
 
                 <div class="six columns">
+
                     <select id="electronicsSelect">
                         <option id="electronicsInitialOption" value="" selected disabled hidden>Electronics</option>
                         <optgroup label="Electronics">
@@ -160,22 +161,24 @@
 
         <div class="row brandTab">
             <div class="twelve columns">
-                <button id="brandsTab" class="button-primary">Keyword</button>
-                <input id="input" type="text">
-                <button id="submit">Submit</button>
+                <button id="brandsTab" class="button-primary themed-button">Keyword</button>
 
-                <input id="checkbox" type="checkbox"> New
+                <input id="input" type="text">
+                <button id="submit" class="themed-button">Submit</button>
+
+                <input id="checkbox" type="checkbox" class="themed-input"> New
             </div>
         </div>
 
         <div class="row">
             <div class="twelve columns">
-                <button id="graphTab" class="button-primary">Graph</button>
+
+                <button id="graphTab" class="button-primary themed-button">Graph</button>
                 <div id="top_x_div" style="width: 100%; height: 150vh;"></div>
             </div>
             <div class="twelve columns">
 
-                <button id="listTab" class="button-primary">List</button>
+                <button id="listTab" class="button-primary themed-button">List</button>
 
                 <table class="table" id="displayItems">
                     <thead>
@@ -187,14 +190,14 @@
                             <th>Total</th>
                         </tr>
                     </thead>
-                    <tbody id="itemsTable">
+                    <tbody id="itemsTable" class="themed-tbody">
                     </tbody>
                 </table>
             </div>
 
             <div class="twelve columns">
 
-                <button id="recentTab" class="button-primary">Recently Priced</button>
+                <button id="recentTab" class="button-primary themed-button">Recently Priced</button>
 
             </div>
             <p class="table recentItem">For items to appear here please click the title of chosen item.</p>
@@ -209,7 +212,7 @@
                         <th>Total</th>
                     </tr>
                 </thead>
-                <tbody id="recentTable">
+                <tbody id="recentTable" class="themed-tbody">
                 </tbody>
             </table>
         </div>
