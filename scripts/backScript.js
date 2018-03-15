@@ -20,6 +20,8 @@ $(document).ready(function() {
   var conditionUsed = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
   var conditionNew = "&itemFilter(1).name=Condition&itemFilter(1).value=1000";
   var condition = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
+  var clothing = false;
+  var nonClothing = false;
 
   function modes(array) {
     if (!array.length) return [];
@@ -57,13 +59,63 @@ $(document).ready(function() {
   });
 
   $("#submit").on("click", function() {
-    $("#itemsTable").empty();
-    item = $("#input").val();
-    console.log(item);
-    getData();
-    $("#input").val("");
+    if (clothing === true) {
+      $("#itemsTable").empty();
+      item = $("#input").val();
+      console.log(item);
+      getData();
+      $("#input").val("");
+      clothing = false;
+    }
+    if (nonClothing === true) {
+      $("#itemsTable").empty();
+      if ($("#input").val() === "") {alert("Please enter search term")};
+      item = $("#input").val();
+      getBestBuyData();
+      $("#input").val("");
+      nonClothing = false;
+    }
   });
 
+  function getBestBuyData() {
+    queryURL =
+      "https://api.bestbuy.com/v1/products((search=" +
+      item +
+      ")&(categoryPath.id=" +
+      categoryId +
+      "))?apiKey=aZbPaFdEwGA1IMWTXeQt0ONL&sort=image.asc&show=image,modelNumber,name,regularPrice,shipping,thumbnailImage&format=json&pageSize=100";
+
+    $.ajax({
+      url: queryURL,
+      method: "GET",
+    }).then(function(response) {
+      for (let i = 0; i < response.products.length; i++) {
+        var newRow = $("<tr>");
+        var picture = $("<td>").html(
+          "<img src=" +
+            response.products[i].image +
+            " alt='img' 'height=100px' width='100px'>"
+        );
+        var Title = $("<td>").text(response.products[i].name);
+        var Price = $("<td>").text(response.products[i].regularPrice);
+        var recent = $("<button>");
+        recent.html(Title);
+        recent.addClass("boxers");
+        newRow.append(picture);
+        newRow.append(recent);
+        newRow.append(Price);
+
+        var Shipping = $("<td>").text("$0.00");
+        var Total = $("<td>").text(response.products[i].regularPrice);
+
+        newRow.append(Shipping);
+        newRow.append(Total);
+        body.append(newRow);
+      }
+      item = "";
+      console.log(response);
+    });
+  }
   function getData() {
     //debugger;
     queryURL =
@@ -83,27 +135,31 @@ $(document).ready(function() {
     google.charts.load("current", { packages: ["bar"] });
 
     function drawStuff() {
-      var data = new google.visualization.arrayToDataTable([
-        ["Price", "Amount"],
-        ["boxers", 44],
-        ["Non", 31],
-        ["Null", 12],
-        ["True", 10],
-        ["Falso", 3],
-      ]);
+      var data = new google.visualization.DataTable();
+
+        data.addColumn('string', 'price');
+        data.addColumn('number', 'frequencyValue');
+
+        // load data
+      for (var j = 0; j < freq.length; j++) {
+          var row = [freq[j].toString(), freqVal[j]];
+          data.addRow(row);
+        }
 
       var options = {
-        title: "Chess opening moves",
-        width: 900,
+        title: "Frequency Graph",
+        hAxis: {
+          title: 'Number Sold',
+          minValue: 0
+        },
         legend: { position: "none" },
         chart: {
-          title: "Pricing Tool",
-          subtitle: "Category Graph",
+          title: "Frequency Graph",
         },
         bars: "horizontal", // Required for Material Bar Charts.
         axes: {
           x: {
-            0: { side: "top", label: "Amount" }, // Top x-axis.
+            0: { side: "Price", label: "Number Sold" }, // Top x-axis.
           },
         },
         bar: { groupWidth: "90%" },
@@ -118,16 +174,12 @@ $(document).ready(function() {
       method: "GET",
     }).then(function(response) {
       result = JSON.parse(response);
-      drawStuff();
 
-      // console.log(result);
-      //   console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
+      
+console.log(result);
+console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
-      for (
-        var i = 0;
-        i < result.findCompletedItemsResponse[0].searchResult[0].item.length;
-        i++
-      ) {
+      for ( var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
           "<img src=" +
@@ -179,31 +231,77 @@ $(document).ready(function() {
         }
 
         var total = $("<td>").text(totalNumber.toFixed(2));
+        //create arrays for math and graphs
+        totals.push(totalNumber);
+        totalsRound.push(Math.round(totalNumber));
 
         newRow.append(Shipping);
         newRow.append(total);
         body.append(newRow);
       }
       item = "";
+      function createFreq(arry) {
+        var a = [], b = [], prev;
+        arry.sort(function (a, b) { return a - b });
+        console.log(arry);
+
+        for (var k = 0; k < arry.length; k++) {
+          if (arry[k] !== prev) {
+            a.push(arry[k]);
+            b.push(1);
+          } else {
+            b[b.length - 1]++;
+          }
+          prev = arry[k];
+        }
+
+        freq = a;
+        console.log(freq);
+        freqVal = b;
+        console.log(freqVal);
+      }
+
+      createFreq(totalsRound);
+
+      drawStuff();
+
+      $(window).resize(function () {
+        drawStuff();
+      });
     });
   }
+
 
   $("#menSelect").on("change", function() {
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
     document.getElementById("input").disabled = false;
+    clothing = true;
   });
   $("#womenSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
     document.getElementById("input").disabled = false;
+    clothing = true;
   });
   $("#otherSelect").on("change", function() {
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
+    clothing = true;
+  });
+  $("#electronicsSelect").on("change", function() {
+    $("#input").val("");
+    $("#menSelect").prop("selectedIndex", 0);
+    $("#womenSelect").prop("selectedIndex", 0);
+    $("#otherSelect").prop("selectedIndex", 0);
+    categoryId = $(this).val();
+    nonClothing = true;
     document.getElementById("input").disabled = false;
   });
 });
