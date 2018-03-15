@@ -99,7 +99,7 @@ $(document).ready(function() {
         );
         var Title = $("<td>").text(response.products[i].name);
         var Price = $("<td>").text(response.products[i].regularPrice);
-        var recent = $("<div>");
+        var recent = $("<span>");
         recent.html(Title);
         recent.addClass("boxers");
         newRow.append(picture);
@@ -209,7 +209,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<div>");
+        var recent = $("<span>");
         recent.html(Title);
         recent.addClass("boxers");
         newRow.append(picture);
