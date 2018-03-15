@@ -101,11 +101,9 @@ console.log($("#itemsTable").html())
         );
         var Title = $("<td>").text(response.products[i].name);
         var Price = $("<td>").text(response.products[i].regularPrice);
-        var recent = $("<button>");
-        recent.html(Title);
-        recent.addClass("boxers");
+        Title.addClass("boxers");
         newRow.append(picture);
-        newRow.append(recent);
+        newRow.append(Title);
         newRow.append(Price);
 
         var Shipping = $("<td>").text("$0.00");
@@ -150,22 +148,37 @@ console.log($("#itemsTable").html())
         }
 
       var options = {
-        title: "Frequency Graph",
-        hAxis: {
-          title: 'Number Sold',
-          minValue: 0
-        },
-        legend: { position: "none" },
+        legend: { position: 'none' },
         chart: {
-          title: "Frequency Graph",
+          title: 'Distribution Chart',
+          subtitle: 'number of items sold at this pirce point, rounded to the nearest dollar'
         },
-        bars: "horizontal", // Required for Material Bar Charts.
+        chartArea: {
+          left: '-50%',
+          width: '50%'
+        },
+        backgroundColor: {
+          fill: '#C8EBD0',
+          fillOpacity: 1.0,
+          stroke: '#48EB6C',
+          strokeWidth: '1',
+        },
+        bars: 'horizontal', // Required for Material Bar Charts.
+        series: {
+          0: { axis: 'freq' }, // Bind series 0 to an axis named 'distance'.
+          1: { axis: 'items' } // Bind series 1 to an axis named 'brightness'.
+        },
         axes: {
           x: {
-            0: { side: "Price", label: "Number Sold" }, // Top x-axis.
-          },
+            freq: { label: 'Number of items sold' }, // Bottom x-axis.
+            items: { label: 'apparent magnitude' } // Top x-axis.
+          }
         },
-        bar: { groupWidth: "90%" },
+        series: {
+          0: {
+            color: '#3CC95B'
+          }
+        }
       };
 
       var chart = new google.charts.Bar(document.getElementById("top_x_div"));
@@ -173,6 +186,7 @@ console.log($("#itemsTable").html())
         event.preventDefault();
         chart.draw(data, options);
       });
+      chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
     $.ajax({
@@ -214,18 +228,14 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<button>");
-        recent.html(Title);
-        recent.addClass("boxers");
+        Title.addClass("boxers");
         newRow.append(picture);
-        newRow.append(recent);
+        newRow.append(Title);
         newRow.append(Price);
         newRow.addClass("panties");
 
         if (
-          result.findCompletedItemsResponse[0].searchResult[0].item[
-            i
-          ].shippingInfo[0].hasOwnProperty("shippingServiceCost")
+          result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty("shippingServiceCost")
         ) {
           Shipping = $("<td>").text(
             result.findCompletedItemsResponse[0].searchResult[0].item[i]
@@ -263,7 +273,9 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
       item = "";
       function createFreq(arry) {
         var a = [], b = [], prev;
-        arry.sort(function (a, b) { return a - b });
+        arry.sort(function (a, b) { 
+          return a - b; 
+        });
         console.log(arry);
 
         for (var k = 0; k < arry.length; k++) {
