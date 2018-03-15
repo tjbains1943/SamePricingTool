@@ -8,7 +8,7 @@ exported save: Palette E.html
     /* note that dashed border is for dev layout only */
 border: #C24BE4 dashed 1px;
 text-align:center;
-background-color: #DEA0EF;
+background-color: #F0F0F0;
 }
 
 tbody {
@@ -58,6 +58,10 @@ tbody {
 
 .boxers {
     border:none;
+}
+
+.hideYoKids {
+    visibility: hidden
 }
 
 @media only screen and (max-width: 550px){
