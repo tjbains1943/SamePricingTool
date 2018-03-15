@@ -275,6 +275,14 @@ tbody {
     border:none;
 }
 
+@media only screen and (max-width: 860px) {
+
+  #nonClothingTab,
+  #clothingTab {
+    width: 47%;
+  }
+}
+
 @media only screen and (max-width: 740px) {
 
     table,
