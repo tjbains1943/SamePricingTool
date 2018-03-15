@@ -1,14 +1,55 @@
+/*
+http://paletton.com/#uid=c4O1+3y2T0kaWV7mcQPiXAMb5J97h-i
+
+exported save: Palette E.html
+*/
+
 *{
-border: red dashed 1px;
+    /* note that dashed border is for dev layout only */
+border: #C24BE4 dashed 1px;
 text-align:center;
+background-color: #DEA0EF;
 }
 
 tbody {
     text-align:center;
 }
 
-input {
+.themed-tbody {
+    background-color: #F7FEA7 !important;
+    color: #EFFB67 !important;
+}
+
+.themed-button {
+    color: #50A0E2 !important;
+    background-color: #A3CCEE !important;
+    border-color: #5188B5 !important;
+}
+
+.themed-button:hover {
+    color: #50A0E2 !important;    
+    background-color: #A0F4B3 !important;
+    border-color: #53CC6E !important;    
+}
+
+.themed-select {
+    color: #50A0E2 !important;
+    background-color: #A3CCEE !important;
+    border-color: #5188B5 !important;
+}
+
+.themed-select:hover {
+    color: #50A0E2 !important;    
+    background-color: #A0F4B3 !important;
+    border-color: #53CC6E !important;    
+}
+
+
+.themed-input {
     text-align: left;
+    color: #50A0E2 !important;
+    background-color: #A0F4B3 !important;
+    border-color: #9BC9A6 !important;
 }
 
 .boxers:hover {
