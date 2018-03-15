@@ -69,7 +69,7 @@ $(document).ready(function() {
     }
     if (nonClothing === true) {
       $("#itemsTable").empty();
-      if ($("#input").val() === "") {alert("Please enter search term")};
+      if ($("#input").val() === "") {alert("Please enter search term");}
       item = $("#input").val();
       getBestBuyData();
       $("#input").val("");
@@ -89,6 +89,7 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET",
     }).then(function(response) {
+      
       for (let i = 0; i < response.products.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
@@ -148,21 +149,17 @@ $(document).ready(function() {
 
       var options = {
         title: "Frequency Graph",
+        chartArea: { width: '50%' },
         hAxis: {
-          title: 'Number Sold',
-          minValue: 0
+          title: 'Total Population',
+          minValue: 0,
+        },
+        vAxis: {
+          title: 'City'
         },
         legend: { position: "none" },
-        chart: {
-          title: "Frequency Graph",
-        },
         bars: "horizontal", // Required for Material Bar Charts.
-        axes: {
-          x: {
-            0: { side: "Price", label: "Number Sold" }, // Top x-axis.
-          },
-        },
-        bar: { groupWidth: "90%" },
+        bar: { groupWidth: "100%" },
       };
 
       var chart = new google.charts.Bar(document.getElementById("top_x_div"));
@@ -179,6 +176,9 @@ $(document).ready(function() {
 console.log(result);
 console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
+      //create alert for no results
+     
+
       for ( var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
@@ -194,7 +194,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
           result.findCompletedItemsResponse[0].searchResult[0].item[i]
             .sellingStatus[0].currentPrice[0].__value__
         );
-        var recent = $("<button>");
+        var recent = $("<div>");
         recent.html(Title);
         recent.addClass("boxers");
         newRow.append(picture);
@@ -202,9 +202,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
         newRow.append(Price);
 
         if (
-          result.findCompletedItemsResponse[0].searchResult[0].item[
-            i
-          ].shippingInfo[0].hasOwnProperty("shippingServiceCost")
+          result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty("shippingServiceCost")
         ) {
           Shipping = $("<td>").text(
             result.findCompletedItemsResponse[0].searchResult[0].item[i]
@@ -242,7 +240,9 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
       item = "";
       function createFreq(arry) {
         var a = [], b = [], prev;
-        arry.sort(function (a, b) { return a - b });
+        arry.sort(function (a, b) { 
+          return a - b; 
+        });
         console.log(arry);
 
         for (var k = 0; k < arry.length; k++) {
