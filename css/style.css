@@ -274,6 +274,7 @@ tbody {
 @media only screen and (max-width: 550px){
     *{
         border:green dashed 1px;
+    }
 @media only screen and (max-width: 860px) {
 
   #nonClothingTab,
@@ -324,4 +325,4 @@ tbody {
     .one-half.column {
         width:50%;
     }
-}
+  }}
