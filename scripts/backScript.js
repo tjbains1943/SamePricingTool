@@ -99,7 +99,7 @@ $(document).ready(function() {
         );
         var Title = $("<td>").text(response.products[i].name);
         var Price = $("<td>").text(response.products[i].regularPrice);
-        var recent = $("<button>");
+        var recent = $("<div>");
         recent.html(Title);
         recent.addClass("boxers");
         newRow.append(picture);
