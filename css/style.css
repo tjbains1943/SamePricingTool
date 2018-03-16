@@ -97,8 +97,9 @@ to our our own style modifications to match
   margin-left: 5px;
   vertical-align: middle;
   cursor: pointer;
-  font-family: 'Luckiest Guy', cursive;
+  font-family: 'Arial', cursive;
   color: #fff;
+  font-size: 20px;
 
 }
 #cbx:checked ~ .cbx {
