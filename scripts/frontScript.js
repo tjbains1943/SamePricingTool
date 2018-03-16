@@ -3,6 +3,7 @@ $(document).ready(function() {
   $(".electOTab").hide();
   $(".brandTab").show();
   $(".table").hide();
+  $("#top_x_div").hide();
   document.getElementById("input").disabled = true;
 
   var config = {
@@ -29,9 +30,11 @@ $(document).ready(function() {
 
   $("#clothingTab").on("click", function(event) {
     event.preventDefault();
+    document.getElementById("input").disabled = true;
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     $(".electOTab").hide();
     $(".mWTab").toggle();
     $("#clothingTab").attr("style", "-webkit-box-shadow: -4px 4px 6px 1px rgba(162,118,175,1); - moz - box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1); box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1);");
@@ -40,9 +43,11 @@ $(document).ready(function() {
 
   $("#nonClothingTab").on("click", function(event) {
     event.preventDefault();
+    document.getElementById("input").disabled = true;
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
+    $("#electronicsSelect").prop("selectedIndex", 0);
     $(".mWTab").hide();
     $(".electOTab").toggle();
     $("#nonClothingTab").attr("style", "-webkit-box-shadow: -4px 4px 6px 1px rgba(162,118,175,1); - moz - box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1); box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1);");
@@ -68,16 +73,17 @@ $(document).ready(function() {
 
   $(document).on("click", ".boxers", function(event) {
     event.preventDefault();
+    var clickItem = $(this).html();
     db.ref("recentItems").push({
-      thisItem: $(this),
-      recentItem: $(this).siblings(),
+      thisAll: $(this).parent(".panties").html(),
     });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
   });
   db.ref("recentItems").on("child_added", function(snap) {
-    console.log(snap.val());
-});
+    console.log(snap.val().thisAll);
+    $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
+})
 
   // Created for an Articles on:
   // https://www.html5andbeyond.com/bubbling-text-effect-no-canvas-required/

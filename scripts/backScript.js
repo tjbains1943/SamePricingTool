@@ -1,13 +1,10 @@
 $(document).ready(function() {
   var item = "anthropologie";
   var category = "63861";
-  var highest = 0;
-  var lowest = 100000;
   var totals = [];
   var totalsRound = [];
   var Shipping = "";
   var totalNumber = "";
-  var runningTally = 0;
   var queryURL = "";
   var body = $("#itemsTable");
   var head = $("#pricingTable");
@@ -21,8 +18,7 @@ $(document).ready(function() {
   var conditionNew = "&itemFilter(1).name=Condition&itemFilter(1).value=1000";
   var condition = "&itemFilter(1).name=Condition&itemFilter(1).value=3000";
   var clothing = false;
-  var nonClothing = false;
-
+  
   function modes(array) {
     if (!array.length) return [];
     var modeMap = {},
@@ -59,24 +55,25 @@ $(document).ready(function() {
   });
 
   $("#submit").on("click", function() {
+    $(".twelveSon").children(".errorMsg").remove();
+    $("#itemsTable").empty();
     if (clothing === true) {
-      $("#itemsTable").empty();
       item = $("#input").val();
       console.log(item);
       getData();
-      $("#input").val("");
-      clothing = false;
     }
-    if (nonClothing === true) {
-      $("#itemsTable").empty();
-      if ($("#input").val() === "") {alert("Please enter search term");}
+    if (clothing === false) {
+      if ($("#input").val() === "") {
+        var errorDisplay = $("<p>");
+        errorDisplay.addClass("errorMsg");
+     $(".twelveSon").append(errorDisplay.text("Please enter a search term."));
+         return;
+        };
       item = $("#input").val();
       getBestBuyData();
-      $("#input").val("");
-      nonClothing = false;
     }
   });
-
+console.log($("#itemsTable").html())
   function getBestBuyData() {
     queryURL =
       "https://api.bestbuy.com/v1/products((search=" +
@@ -89,7 +86,12 @@ $(document).ready(function() {
       url: queryURL,
       method: "GET",
     }).then(function(response) {
-      
+      if (!('0' in response.products)) {
+        var errorDisplay = $("<p>");
+        errorDisplay.addClass("errorMsg");
+        $(".twelveSon").append(errorDisplay.text("Sorry, your search returned 0 results. Please try again"));
+        return;
+      }
       for (let i = 0; i < response.products.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
@@ -180,6 +182,10 @@ $(document).ready(function() {
       };
 
       var chart = new google.charts.Bar(document.getElementById("top_x_div"));
+      $("#graphTab").on("click", function(event) {
+        event.preventDefault();
+        chart.draw(data, options);
+      });
       chart.draw(data, google.charts.Bar.convertOptions(options));
     }
 
@@ -188,14 +194,25 @@ $(document).ready(function() {
       method: "GET",
     }).then(function(response) {
       result = JSON.parse(response);
-
       
 console.log(result);
+
+if (!('item' in result.findCompletedItemsResponse[0].searchResult[0])) {
+  queryURL = "https://crossorigin.me/https://svcs.ebay.com/services/search/FindingService/v1?OPERATION-NAME=getSearchKeywordsRecommendation&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=MaureenB-Improved-PRD-a5d7504c4-a5fecda0&RESPONSE-DATA-FORMAT=JSON&REST-PAYLOAD&keywords=" + item
+  $.ajax({
+    url : queryURL, 
+    method: "GET",
+  }).then(function(response) {
+    result = JSON.parse(response);
+    console.log(result);
+    var newWord = result.getSearchKeywordsRecommendationResponse[0].keywords;
+    var errorDisplay = $("<p>");
+  errorDisplay.addClass("errorMsg");
+  $(".twelveSon").append(errorDisplay.html("Sorry, your search returned 0 results. Did you mean <i>" + newWord + "</i>?"));
+  })
+  return;
+}
 console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
-
-      //create alert for no results
-     
-
       for ( var i = 0; i < result.findCompletedItemsResponse[0].searchResult[0].item.length; i++) {
         var newRow = $("<tr>");
         var picture = $("<td>").html(
@@ -215,6 +232,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
         newRow.append(picture);
         newRow.append(Title);
         newRow.append(Price);
+        newRow.addClass("panties");
 
         if (
           result.findCompletedItemsResponse[0].searchResult[0].item[i].shippingInfo[0].hasOwnProperty("shippingServiceCost")
@@ -288,6 +306,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
 
 
   $("#menSelect").on("change", function() {
+    $("#input").val("");
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     $("#electronicsSelect").prop("selectedIndex", 0);
@@ -296,6 +315,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
     clothing = true;
   });
   $("#womenSelect").on("change", function() {
+    $("#input").val("");
     $("#menSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     $("#electronicsSelect").prop("selectedIndex", 0);
@@ -304,11 +324,14 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
     clothing = true;
   });
   $("#otherSelect").on("change", function() {
+    $("#input").val("");
     $("#menSelect").prop("selectedIndex", 0);
     $("#womenSelect").prop("selectedIndex", 0);
     $("#electronicsSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
     clothing = true;
+    document.getElementById("input").disabled = false;
+
   });
   $("#electronicsSelect").on("change", function() {
     $("#input").val("");
@@ -316,7 +339,7 @@ console.log(result.findCompletedItemsResponse[0].searchResult[0].item.length);
     $("#womenSelect").prop("selectedIndex", 0);
     $("#otherSelect").prop("selectedIndex", 0);
     categoryId = $(this).val();
-    nonClothing = true;
+    clothing = false;
     document.getElementById("input").disabled = false;
   });
 });
