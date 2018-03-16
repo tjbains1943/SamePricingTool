@@ -36,8 +36,8 @@ to our our own style modifications to match
    our color theme, but need to learn how to adapt it 
    when using skeleton css.)
 */
-.hidden {
-    opacity: 0;
+.test1 {
+    display: none !important;
 }
 
 .leo_test{
@@ -46,8 +46,26 @@ to our our own style modifications to match
     justify-content: space-between;
 }
 
-.leo_test_div{
-    width: 20%
+.third {
+  width: 30%;
+}
+.third-special{
+  width:30%;
+  margin-top: 5px;
+  padding-top:6px;
+  display: flex;
+  justify-content: space-between
+}
+.third-special-child{
+  width: 45%;
+}
+
+.leo_test_div_3{
+    width: 30%;
+}
+
+.leo_test_div_6{
+    width: 15%;
 }
 
 .cbx {
@@ -75,7 +93,7 @@ to our our own style modifications to match
   transition: all 0.3s ease;
   transition-delay: 0.15s;
 }
-.lbl {
+.lbl {6
   margin-left: 5px;
   vertical-align: middle;
   cursor: pointer;
@@ -222,6 +240,7 @@ td {
     color: #50A0E2 !important;
     background-color: #A3CCEE !important;
     border-color: #5188B5 !important;
+    width: 100%;
 }
 
 .themed-button:hover {
