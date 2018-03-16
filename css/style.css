@@ -93,7 +93,7 @@ to our our own style modifications to match
   transition: all 0.3s ease;
   transition-delay: 0.15s;
 }
-.lbl {6
+.lbl {
   margin-left: 5px;
   vertical-align: middle;
   cursor: pointer;
