@@ -321,9 +321,7 @@ tbody {
     display: block;
   }
   thead tr {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
+    display: none;
   }
   tr {
     border: 1px solid #ccc;
@@ -333,9 +331,9 @@ tbody {
     /* Behave  like a "row" */
     border: none;
     border-bottom: 1px solid #eee;
-    position: relative;
     width: 100%;
     text-align: center;
+    padding: 0;
   }
   td img {
     margin: auto;
