@@ -37,6 +37,8 @@ $(document).ready(function() {
     $("#electronicsSelect").prop("selectedIndex", 0);
     $(".electOTab").hide();
     $(".mWTab").toggle();
+    $("#clothingTab").attr("style", "-webkit-box-shadow: -4px 4px 6px 1px rgba(162,118,175,1); - moz - box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1); box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1);");
+    $("#nonClothingTab").removeAttr("style");
   });
 
   $("#nonClothingTab").on("click", function(event) {
@@ -48,6 +50,8 @@ $(document).ready(function() {
     $("#electronicsSelect").prop("selectedIndex", 0);
     $(".mWTab").hide();
     $(".electOTab").toggle();
+    $("#nonClothingTab").attr("style", "-webkit-box-shadow: -4px 4px 6px 1px rgba(162,118,175,1); - moz - box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1); box - shadow: -4px 4px 6px 1px rgba(162, 118, 175, 1);");
+    $("#clothingTab").removeAttr("style");
   });
 
   $("#usedTab").on("click", function(event) {
@@ -75,7 +79,7 @@ $(document).ready(function() {
     });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
-  })
+  });
   db.ref("recentItems").on("child_added", function(snap) {
     console.log(snap.val().thisAll);
     $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
@@ -117,7 +121,7 @@ $(document).ready(function() {
         'bottom': '100%',
         'opacity': '-=0.7'
       }, 3000, function () {
-        $(this).remove()
+        $(this).remove();
       }
       );
 
