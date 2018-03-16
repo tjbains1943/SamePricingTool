@@ -78,7 +78,7 @@ $(document).ready(function() {
   })
   db.ref("recentItems").on("child_added", function(snap) {
     console.log(snap.val().thisAll);
-    $("#recentTable").append("<tr>" + snap.val().thisAll + "</tr>");
+    $("#recentTable").prepend("<tr>" + snap.val().thisAll + "</tr>");
 })
 
   // Created for an Articles on:
