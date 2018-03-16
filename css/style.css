@@ -39,6 +39,17 @@ to our our own style modifications to match
 .hidden {
     opacity: 0;
 }
+
+.leo_test{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.leo_test_div{
+    width: 20%
+}
+
 .cbx {
   position: relative;
   top: 1px;
@@ -68,6 +79,9 @@ to our our own style modifications to match
   margin-left: 5px;
   vertical-align: middle;
   cursor: pointer;
+  font-family: 'Luckiest Guy', cursive;
+  color: #fff;
+
 }
 #cbx:checked ~ .cbx {
   border-color: transparent;
