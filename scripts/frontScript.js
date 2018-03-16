@@ -74,10 +74,10 @@ $(document).ready(function() {
     });
     document.body.scrollTop = 0;
     document.documentElement.scrollTop = 0; 
-  })
+  });
   db.ref("recentItems").on("child_added", function(snap) {
     console.log(snap.val());
-})
+});
 
   // Created for an Articles on:
   // https://www.html5andbeyond.com/bubbling-text-effect-no-canvas-required/
@@ -115,7 +115,7 @@ $(document).ready(function() {
         'bottom': '100%',
         'opacity': '-=0.7'
       }, 3000, function () {
-        $(this).remove()
+        $(this).remove();
       }
       );
 
