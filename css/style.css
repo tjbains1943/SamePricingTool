@@ -304,12 +304,7 @@ tbody {
     visibility: hidden
 }
 
-@media only screen and (max-width: 550px){
-    *{
-        border:green dashed 1px;
-    }
 @media only screen and (max-width: 860px) {
-
   #nonClothingTab,
   #clothingTab {
     width: 47%;
@@ -317,45 +312,39 @@ tbody {
 }
 
 @media only screen and (max-width: 740px) {
-
-    table,
-    thead,
-    tbody,
-    th,
-    td,
-    tr {
-        display: block;
-    }
-
-    thead tr {
-        position: absolute;
-        top: -9999px;
-        left: -9999px;
-    }
-
-    tr {
-        border: 1px solid #ccc;
-        margin:auto;
-    }
-
-    td {
-        /* Behave  like a "row" */
-        border: none;
-        border-bottom: 1px solid #eee;
-        position: relative;
-        padding-left: 50%;
-        width:100%;
-        text-align: center;
-    }
-
-    td img {
-      margin:auto;
-    }
+  table,
+  thead,
+  tbody,
+  th,
+  td,
+  tr {
+    display: block;
+  }
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr {
+    border: 1px solid #ccc;
+    margin: auto;
+  }
+  td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 50%;
+    width: 100%;
+    text-align: center;
+  }
+  td img {
+    margin: auto;
+  }
 }
 
-@media only screen and (max-width: 550px){
-
-    .one-half.column {
-        width:50%;
-    }
-  }}
+@media only screen and (max-width: 550px) {
+  .one-half.column {
+    width: 50%;
+  }
+}
